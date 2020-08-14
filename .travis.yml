@@ -45,7 +45,6 @@ matrix:
       name: Build on Python 3.8 in Mac OSX xcode11.3
       env: CFLAGS="-Werror -coverage"
 install:
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then source .travis/downloadCairo.sh; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then travis_retry sudo apt-get update -q; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then travis_retry sudo apt-get install -y libcairo2-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
@@ -82,6 +81,7 @@ before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 
 deploy:
+  if: TRAVIS_OS_NAME = windows
   provider: releases
   file_glob: true
   api_key: $GITHUBOAUTHTOKEN

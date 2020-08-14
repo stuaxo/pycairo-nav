@@ -1,5 +1,9 @@
-#x64 python begins here
+#download cairo
+curl -L https://github.com/preshing/cairo-windows/releases/download/$CAIRO_VERSION/cairo-windows-$CAIRO_VERSION.zip -o cairocomplied.zip
+7z x cairocomplied.zip
+mv cairo-windows-$CAIRO_VERSION cairocomplied
 curl -L https://aka.ms/nugetclidl -o nuget.exe
+#x64 python begins here
 export INCLUDE="$PWD/cairocomplied/include/"
 export LIB="$PWD/cairocomplied/lib/x64/"
 cp cairocomplied/lib/x64/cairo.dll cairo/cairo.dll
