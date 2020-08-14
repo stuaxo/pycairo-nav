@@ -81,7 +81,6 @@ before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 
 deploy:
-  if: TRAVIS_OS_NAME = windows
   provider: releases
   file_glob: true
   api_key: $GITHUBOAUTHTOKEN
