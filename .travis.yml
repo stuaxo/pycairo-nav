@@ -80,7 +80,7 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export INCLUDE="$TMP/cairo-windows-$CAIRO_VERSION/include"; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export LIB=$TMP/cairo-windows-$CAIRO_VERSION/lib/$ARCH; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export PATH=$TMP/nuget-$ARCH/python.$PYTHON_VERSION/tools/:$TMP/nuget-$ARCH/python.$PYTHON_VERSION/tools/Scripts:$PATH; fi
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then python -m pip install --upgrade wheel; fi
+  - python -m pip install --upgrade wheel
   - python -m pip install --upgrade setuptools
   - python -m pip install --upgrade pytest flake8 "sphinx<3" sphinx_rtd_theme coverage codecov hypothesis attrs
   - python -m pip install --upgrade mypy || true
