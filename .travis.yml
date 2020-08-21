@@ -73,10 +73,10 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then python3 -m pip install virtualenv; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then virtualenv ../venv -p python3; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then source ../venv/bin/activate; fi
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then curl -sS -L https://aka.ms/nugetclidl -o $TMP/nuget.exe; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then curl -sS --create-dirs -L https://aka.ms/nugetclidl -o $TMP/nuget/nuget.exe; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then curl -sS -L https://github.com/preshing/cairo-windows/releases/download/$CAIRO_VERSION/cairo-windows-$CAIRO_VERSION.zip -o $TMP/cairo-windows-$CAIRO_VERSION.zip; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then 7z x $TMP/cairo-windows-$CAIRO_VERSION.zip -o$TMP; fi
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then $TMP/nuget install python -Version $PYTHON_VERSION -OutputDirectory $TMP/nuget-$ARCH; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then $TMP/nuget/nuget install python -Version $PYTHON_VERSION -OutputDirectory $TMP/nuget-$ARCH; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export INCLUDE="$TMP/cairo-windows-$CAIRO_VERSION/include"; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export LIB=$TMP/cairo-windows-$CAIRO_VERSION/lib/$ARCH; fi
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then export PATH=$TMP/nuget-$ARCH/python.$PYTHON_VERSION/tools/:$TMP/nuget-$ARCH/python.$PYTHON_VERSION/tools/Scripts:$PATH; fi
